@@ -2,8 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Calculadora {
-    private JButton cButton;
+public  class Calculadora {
+    private JButton BtnC;
     private JButton Btn4;
     private JButton Btn1;
     private JButton Btn0;
@@ -127,7 +127,7 @@ public class Calculadora {
                 }
             }});
 
-        BtnSomar.addActionListener(new ActionListener() {
+        BtnIgual.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!Resultado.getText().isEmpty()){
@@ -135,20 +135,19 @@ public class Calculadora {
                  double resultado = 0;
 
                  if (operador.equals("+")){
-                     resultado = num1 + num2;
+                     resultado = (num1 + num2);
                  }else if (operador.equals("-")) {
-                     resultado = num1 - num2;
+                     resultado = (num1 - num2);
                  } else if (operador.equals("*")) {
-                     resultado = num1 * num2;
+                     resultado = (num1 * num2);
                  } else if (operador.equals("/")) {
                      if (num2 != 0) {
-                         resultado = num1 / num2;
+                         resultado = (num1 / num2);
                      } else {
                          Resultado.setText("Erro");
                          return;
                      }
                  }
-
 
 
                 Resultado.setText(String.valueOf(resultado));
@@ -160,11 +159,22 @@ public class Calculadora {
 
 
 
+        BtnC.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Resultado.setText("");
+                num1 = 0;
+                num2 = 0;
+                operador = "";
+            }
+        });
     }
+
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculadora");
         frame.setContentPane(new Calculadora().panelMain);
         frame.setSize(400,400);
         frame.setVisible(true);
-    }
-}
+    }}
+
